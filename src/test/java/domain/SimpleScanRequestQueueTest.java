@@ -22,11 +22,7 @@ class SimpleScanRequestQueueTest {
         requestQueue = new SimpleScanRequestQueue(MIN_FLOOR, MAX_FLOOR);
     }
 
-    private void makeSteps(int stepsCount){
-        for(int i=0; i<stepsCount; i++){
 
-        }
-    }
 
 
     @Test
@@ -74,7 +70,7 @@ class SimpleScanRequestQueueTest {
         Throwable thrown = catchThrowable(() ->  requestQueue.addRequest(floor, 1));
         // then
         AssertionsForClassTypes.assertThat(thrown)
-                .isInstanceOf(Exception.class)
+                .isInstanceOf(IncorrectFloorNumberException.class)
                 .hasMessage("Incorrect floor number");
     }
 
@@ -86,7 +82,7 @@ class SimpleScanRequestQueueTest {
         Throwable thrown = catchThrowable(() ->  requestQueue.addRequest(floor, -1));
         // then
         AssertionsForClassTypes.assertThat(thrown)
-                .isInstanceOf(Exception.class)
+                .isInstanceOf(IncorrectFloorNumberException.class)
                 .hasMessage("Incorrect floor number");
     }
 
