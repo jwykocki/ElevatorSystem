@@ -10,14 +10,21 @@ public class SimpleScanRequestQueue implements FloorRequestQueue {
         private final Queue<Integer> upQueue;
         private final Queue<Integer> downQueue;
         private boolean movingUp;
+        private final int maximumFloor;
+        private final int minimumFloor;
 
-        public SimpleScanRequestQueue() {
+        public SimpleScanRequestQueue(int minimumFloor, int maximumFloor) {
             this.upQueue = new PriorityQueue<>();
             this.downQueue = new PriorityQueue<>((a, b) -> b - a);
             this.movingUp = true;
+            this.maximumFloor = maximumFloor;
+            this.minimumFloor = minimumFloor;
         }
 
-        public void addRequest(int floor, int direction) {
+        public void addRequest(int floor, int direction) throws Exception {
+            if(floor > maximumFloor || floor < minimumFloor){
+                throw new Exception("Incorrect floor number");
+            }
             if (direction > 0) {
                 upQueue.offer(floor);
             } else {
@@ -32,14 +39,13 @@ public class SimpleScanRequestQueue implements FloorRequestQueue {
 
             if(movingUp){
                 if(!upQueue.isEmpty()) {
-                    int nextFloor = currentFloor;
-                    if (upQueue.peek() == nextFloor) {
-                        log.info("Stop at floor " + nextFloor);
+                    if (upQueue.peek() == currentFloor) {
+                        log.info("Stop at floor " + currentFloor);
                         upQueue.poll();
                     }else{
-                        nextFloor ++;
+                        currentFloor ++;
                     }
-                    return nextFloor;
+                    return currentFloor;
                 }else{
                     movingUp = false;
                     return getNextFloor(currentFloor);
@@ -47,12 +53,13 @@ public class SimpleScanRequestQueue implements FloorRequestQueue {
             }
             else{
                 if(!downQueue.isEmpty()) {
-                    int nextFloor = currentFloor - 1;
-                    if (downQueue.peek() == nextFloor) {
-                        log.info("Stop at floor " + nextFloor);
+                    if (downQueue.peek() == currentFloor) {
+                        log.info("Stop at floor " + currentFloor);
                         downQueue.poll();
+                    }else{
+                        currentFloor --;
                     }
-                    return nextFloor;
+                    return currentFloor;
                 }else{
                     movingUp = true;
                     return getNextFloor(currentFloor);

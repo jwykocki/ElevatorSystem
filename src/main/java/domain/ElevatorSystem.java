@@ -8,12 +8,12 @@ import java.util.List;
 
 @Log4j2
 public class ElevatorSystem {
-    public ElevatorSystem(int numberOfElevators) {
+    public ElevatorSystem(int numberOfElevators, int minimumFloor, int maximumFloor) {
         elevators = new ArrayList<>();
         floorQueues = new ArrayList<>();
         for (int id = 0; id < numberOfElevators; id++) {
             elevators.add(new Elevator(id, 0, 0));
-            floorQueues.add(new SimpleScanRequestQueue());
+            floorQueues.add(new SimpleScanRequestQueue(minimumFloor, maximumFloor));
         }
         log.info("Created system with " + numberOfElevators + " elevators");
     }
@@ -69,7 +69,7 @@ public class ElevatorSystem {
         }
     }
 
-    public int pickup(int floor){
+    public int pickup(int floor) throws Exception {
         int elevatorIndex = 0; //TODO: find nearest elevator
         int currentFloor = elevators.get(elevatorIndex).getCurrentFloor();
         int direction = countDirection(currentFloor, floor);
