@@ -2,7 +2,7 @@ package domain;
 
 public interface FloorRequestQueue {
 
-    void addRequest(int currentFloor, int floor);
+    void addRequest(int floor, int direction);
     int getNextFloor(int currentFloor);
 
 }
