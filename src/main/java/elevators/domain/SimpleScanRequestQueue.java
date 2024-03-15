@@ -1,5 +1,6 @@
-package domain;
+package elevators.domain;
 
+import elevators.domain.exceptions.IncorrectFloorNumberException;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.*;
@@ -20,9 +21,9 @@ public class SimpleScanRequestQueue implements FloorRequestQueue {
             this.minimumFloor = minimumFloor;
         }
 
-        public void addRequest(int floor, int direction) throws IncorrectFloorNumberException {
+        public void addRequest(int floor, int direction){
             if(floor > maximumFloor || floor < minimumFloor){
-                throw new IncorrectFloorNumberException("Incorrect floor number");
+                throw new IncorrectFloorNumberException();
             }
             if (direction > 0) {
                 upQueue.offer(floor);

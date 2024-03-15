@@ -1,17 +1,30 @@
 package domain;
 
+import elevators.domain.ElevatorSystem;
+import elevators.domain.ElevatorSystemConfig;
+import elevators.domain.exceptions.IncorrectFloorNumberException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ElevatorSystemTest {
 
+
     private ElevatorSystem elevatorSystem;
-    private static final int MAX_FLOOR = 5;
-    private static final int MIN_FLOOR = 0;
-    private static final int ELEVATORS_NUMBER = 3;
+    private ElevatorSystemConfig elevatorSystemConfig;
+
+
+
+    @BeforeEach
+    public void setUp() {
+        elevatorSystemConfig = new ElevatorSystemConfig(3, 0, 5);
+
+        elevatorSystem = new ElevatorSystem(elevatorSystemConfig);
+    }
 
     private void makeSteps(int stepsCount){
         for(int i=0; i<stepsCount; i++){
@@ -19,18 +32,13 @@ class ElevatorSystemTest {
         }
     }
 
-    @BeforeEach
-    public void setUp() {
-        elevatorSystem = new ElevatorSystem(ELEVATORS_NUMBER, MIN_FLOOR, MAX_FLOOR);
-    }
-
     @Test
     void should_choose_elevator_index_1_when_that_is_nearest() throws IncorrectFloorNumberException {
         //given
         elevatorSystem.pickup(5); //0
         makeSteps(3);
-        int firstElevatorFloor = elevatorSystem.status().get(0).get(1);
-        int secondElevatorFloor = elevatorSystem.status().get(1).get(1);
+        int firstElevatorFloor = elevatorSystem.status().get(0).getCurrentFloor();
+        int secondElevatorFloor = elevatorSystem.status().get(1).getCurrentFloor();
         //when
         int chosenIx = elevatorSystem.pickup(1); //1
         //then
@@ -44,8 +52,8 @@ class ElevatorSystemTest {
         //given
         elevatorSystem.pickup(3); //0
         makeSteps(3);
-        int firstElevatorFloor = elevatorSystem.status().get(0).get(1);
-        int secondElevatorFloor = elevatorSystem.status().get(1).get(1);
+        int firstElevatorFloor = elevatorSystem.status().get(0).getCurrentFloor();
+        int secondElevatorFloor = elevatorSystem.status().get(1).getCurrentFloor();
         //when
         int chosenIx = elevatorSystem.pickup(5); //1
         //then
@@ -71,13 +79,13 @@ class ElevatorSystemTest {
     void should_update_one_elevator_after_one_step() throws IncorrectFloorNumberException {
         //given
         elevatorSystem.pickup(5); //0
-        int previousFloor = elevatorSystem.status().get(0).get(1);
-        int previousNextFloor = elevatorSystem.status().get(0).get(2);
+        int previousFloor = elevatorSystem.status().get(0).getCurrentFloor();
+        int previousNextFloor = elevatorSystem.status().get(0).getNextFloor();
         //when
         elevatorSystem.step();
         //then
-        int currentFloor = elevatorSystem.status().get(0).get(1);
-        int currentNextFloor = elevatorSystem.status().get(0).get(2);
+        int currentFloor = elevatorSystem.status().get(0).getCurrentFloor();
+        int currentNextFloor = elevatorSystem.status().get(0).getNextFloor();
         assertThat(previousFloor).isEqualTo(0);
         assertThat(previousNextFloor).isEqualTo(0);
         assertThat(currentFloor).isEqualTo(0);
@@ -88,14 +96,14 @@ class ElevatorSystemTest {
     void should_update_one_elevator_after_two_steps() throws IncorrectFloorNumberException {
         //given
         elevatorSystem.pickup(5); //0
-        int previousFloor = elevatorSystem.status().get(0).get(1);
-        int previousNextFloor = elevatorSystem.status().get(0).get(2);
+        int previousFloor = elevatorSystem.status().get(0).getCurrentFloor();
+        int previousNextFloor = elevatorSystem.status().get(0).getNextFloor();
         //when
         elevatorSystem.step();
         elevatorSystem.step();
         //then
-        int currentFloor = elevatorSystem.status().get(0).get(1);
-        int currentNextFloor = elevatorSystem.status().get(0).get(2);
+        int currentFloor = elevatorSystem.status().get(0).getCurrentFloor();
+        int currentNextFloor = elevatorSystem.status().get(0).getNextFloor();
         assertThat(previousFloor).isEqualTo(0);
         assertThat(previousNextFloor).isEqualTo(0);
         assertThat(currentFloor).isEqualTo(1);

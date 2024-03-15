@@ -1,0 +1,5 @@
+elevator:
+  system:
+    numberOfElevators: 3
+    minimumFloor: 0
+    maximumFloor: 5
