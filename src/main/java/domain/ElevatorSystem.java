@@ -69,11 +69,24 @@ public class ElevatorSystem {
         }
     }
 
-    public int pickup(int floor) throws Exception {
-        int elevatorIndex = 0; //TODO: find nearest elevator
+    private int findNearestElevator(int floor) {
+        int nearestElevator = 0;
+        int minDistance = floorQueues.get(0).getDistance(elevators.get(0).getCurrentFloor(), floor);
+        for (int i = 1; i < elevators.size(); i++) {
+            int distance = floorQueues.get(0).getDistance(elevators.get(i).getCurrentFloor(), floor);
+            if (distance < minDistance) {
+                minDistance = distance;
+                nearestElevator = i;
+            }
+        }
+        return nearestElevator;
+    }
+
+    public int pickup(int floor) throws IncorrectFloorNumberException {
+        int elevatorIndex = findNearestElevator(floor);
         int currentFloor = elevators.get(elevatorIndex).getCurrentFloor();
         int direction = countDirection(currentFloor, floor);
-        log.info("Pickup: " + floor + " " + direction);
+        log.info("Pickup: " + floor + " " + direction + "(" + elevatorIndex + ")");
         floorQueues.get(elevatorIndex).addRequest(floor, direction);
         return elevatorIndex;
     }

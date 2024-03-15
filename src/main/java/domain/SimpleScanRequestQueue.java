@@ -2,8 +2,7 @@ package domain;
 
 import lombok.extern.log4j.Log4j2;
 
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 @Log4j2
 public class SimpleScanRequestQueue implements FloorRequestQueue {
@@ -21,9 +20,9 @@ public class SimpleScanRequestQueue implements FloorRequestQueue {
             this.minimumFloor = minimumFloor;
         }
 
-        public void addRequest(int floor, int direction) throws Exception {
+        public void addRequest(int floor, int direction) throws IncorrectFloorNumberException {
             if(floor > maximumFloor || floor < minimumFloor){
-                throw new Exception("Incorrect floor number");
+                throw new IncorrectFloorNumberException("Incorrect floor number");
             }
             if (direction > 0) {
                 upQueue.offer(floor);
@@ -65,6 +64,26 @@ public class SimpleScanRequestQueue implements FloorRequestQueue {
                     return getNextFloor(currentFloor);
                 }
             }
+    }
+
+    public int getDistance(int currentFloor, int destinationFloor){
+        if(movingUp){
+            if(currentFloor <= destinationFloor){
+                return destinationFloor - currentFloor;
+            }else {
+                int last = upQueue.stream().max(Integer::compareTo).orElse(0);
+                return last - currentFloor + last - destinationFloor;
+            }
+        }
+        else{
+            if(currentFloor >= destinationFloor){
+                return currentFloor - destinationFloor;
+            }else {
+                int last = downQueue.stream().min(Integer::compareTo).orElseThrow();
+                return currentFloor - last + destinationFloor - last;
+            }
+        }
+
     }
 
 
