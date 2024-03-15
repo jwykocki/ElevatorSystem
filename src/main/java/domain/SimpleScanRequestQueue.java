@@ -7,8 +7,8 @@ import java.util.Queue;
 
 @Log4j2
 public class SimpleScanRequestQueue implements FloorRequestQueue {
-        private Queue<Integer> upQueue;
-        private Queue<Integer> downQueue;
+        private final Queue<Integer> upQueue;
+        private final Queue<Integer> downQueue;
         private boolean movingUp;
 
         public SimpleScanRequestQueue() {
@@ -20,7 +20,7 @@ public class SimpleScanRequestQueue implements FloorRequestQueue {
         public void addRequest(int floor, int direction) {
             if (direction > 0) {
                 upQueue.offer(floor);
-            } else if (direction < 0) {
+            } else {
                 downQueue.offer(floor);
             }
         }
@@ -32,10 +32,12 @@ public class SimpleScanRequestQueue implements FloorRequestQueue {
 
             if(movingUp){
                 if(!upQueue.isEmpty()) {
-                    int nextFloor = currentFloor + 1;
+                    int nextFloor = currentFloor;
                     if (upQueue.peek() == nextFloor) {
                         log.info("Stop at floor " + nextFloor);
                         upQueue.poll();
+                    }else{
+                        nextFloor ++;
                     }
                     return nextFloor;
                 }else{

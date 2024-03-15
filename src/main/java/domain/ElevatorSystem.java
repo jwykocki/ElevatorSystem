@@ -61,16 +61,18 @@ public class ElevatorSystem {
         }
     }
 
-    public int pickup(int floor){
+    private int countDirection(int currentFloor, int destinationFloor){
+        if(currentFloor>destinationFloor){
+            return  -1;
+        }else{
+            return  1;
+        }
+    }
 
+    public int pickup(int floor){
         int elevatorIndex = 0; //TODO: find nearest elevator
         int currentFloor = elevators.get(elevatorIndex).getCurrentFloor();
-        int direction;
-        if(currentFloor>floor){
-            direction = -1;
-        }else{
-            direction = 1;
-        }
+        int direction = countDirection(currentFloor, floor);
         log.info("Pickup: " + floor + " " + direction);
         floorQueues.get(elevatorIndex).addRequest(floor, direction);
         return elevatorIndex;
