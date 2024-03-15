@@ -13,7 +13,7 @@ public class ElevatorSystem {
         floorQueues = new ArrayList<>();
         for (int id = 0; id < numberOfElevators; id++) {
             elevators.add(new Elevator(id, 0, 0));
-            floorQueues.add(new ScanRequestQueue());
+            floorQueues.add(new SimpleScanRequestQueue());
         }
         log.info("Created system with " + numberOfElevators + " elevators");
     }
@@ -61,9 +61,17 @@ public class ElevatorSystem {
         }
     }
 
-    public int pickup(int floor, int direction){
-        log.info("Pickup: " + floor + " " + direction);
+    public int pickup(int floor){
+
         int elevatorIndex = 0; //TODO: find nearest elevator
+        int currentFloor = elevators.get(elevatorIndex).getCurrentFloor();
+        int direction;
+        if(currentFloor>floor){
+            direction = -1;
+        }else{
+            direction = 1;
+        }
+        log.info("Pickup: " + floor + " " + direction);
         floorQueues.get(elevatorIndex).addRequest(floor, direction);
         return elevatorIndex;
     }
