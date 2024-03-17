@@ -1,13 +1,10 @@
-package domain;
+package com.elevators.domain;
 
-import elevators.domain.ElevatorSystem;
-import elevators.domain.ElevatorSystemConfig;
-import elevators.domain.exceptions.IncorrectFloorNumberException;
+import com.elevators.domain.ElevatorSystem;
+import com.elevators.domain.ElevatorSystemConfig;
+import com.elevators.domain.exceptions.IncorrectFloorNumberException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

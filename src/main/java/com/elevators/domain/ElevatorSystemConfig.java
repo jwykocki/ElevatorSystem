@@ -1,4 +1,4 @@
-package elevators.domain;
+package com.elevators.domain;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
-package elevators.infrastructure;
+package com.elevators.infrastructure;
 
-import elevators.domain.exceptions.IncorrectFloorNumberException;
+import com.elevators.domain.exceptions.IncorrectFloorNumberException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -15,7 +15,7 @@ public class FloorExceptionHandler {
     @ExceptionHandler(IncorrectFloorNumberException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public FloorErrorResponse handleOfferNotFoundException(IncorrectFloorNumberException exception) {
+    public FloorErrorResponse handleFloorNotFoundException(IncorrectFloorNumberException exception) {
         String message = exception.getMessage();
         log.error(message);
         return new FloorErrorResponse(message, HttpStatus.NOT_FOUND);

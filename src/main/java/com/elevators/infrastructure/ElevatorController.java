@@ -1,8 +1,8 @@
-package elevators.infrastructure;
+package com.elevators.infrastructure;
 
-import elevators.domain.ElevatorSystem;
-import elevators.domain.dto.ElevatorDto;
-import elevators.domain.dto.PickupRequestDto;
+import com.elevators.domain.dto.PickupRequestDto;
+import com.elevators.domain.ElevatorSystem;
+import com.elevators.domain.dto.ElevatorDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
