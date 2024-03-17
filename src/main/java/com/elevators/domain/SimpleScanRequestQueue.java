@@ -1,6 +1,6 @@
-package elevators.domain;
+package com.elevators.domain;
 
-import elevators.domain.exceptions.IncorrectFloorNumberException;
+import com.elevators.domain.exceptions.IncorrectFloorNumberException;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.*;

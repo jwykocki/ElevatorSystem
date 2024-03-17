@@ -1,7 +1,7 @@
-package domain;
+package com.elevators.domain;
 
-import elevators.domain.SimpleScanRequestQueue;
-import elevators.domain.exceptions.IncorrectFloorNumberException;
+import com.elevators.domain.SimpleScanRequestQueue;
+import com.elevators.domain.exceptions.IncorrectFloorNumberException;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

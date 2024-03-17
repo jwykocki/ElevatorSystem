@@ -1,7 +1,6 @@
-package elevators;
+package com.elevators;
 
-import elevators.domain.ElevatorSystem;
-import elevators.domain.ElevatorSystemConfig;
+import com.elevators.domain.ElevatorSystemConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

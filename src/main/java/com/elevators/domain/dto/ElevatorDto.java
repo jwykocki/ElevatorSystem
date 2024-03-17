@@ -1,4 +1,4 @@
-package elevators.domain.dto;
+package com.elevators.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

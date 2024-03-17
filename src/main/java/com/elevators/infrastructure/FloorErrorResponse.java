@@ -1,4 +1,4 @@
-package elevators.infrastructure;
+package com.elevators.infrastructure;
 
 import org.springframework.http.HttpStatus;
 

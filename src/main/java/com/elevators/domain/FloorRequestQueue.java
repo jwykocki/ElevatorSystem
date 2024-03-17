@@ -1,6 +1,4 @@
-package elevators.domain;
-
-import elevators.domain.exceptions.IncorrectFloorNumberException;
+package com.elevators.domain;
 
 public interface FloorRequestQueue {
 

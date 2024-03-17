@@ -1,4 +1,4 @@
-package elevators.domain.exceptions;
+package com.elevators.domain.exceptions;
 
 public class IncorrectFloorNumberException extends RuntimeException{
     public IncorrectFloorNumberException() {

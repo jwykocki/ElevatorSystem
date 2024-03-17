@@ -1,9 +1,7 @@
-package elevators.domain;
+package com.elevators.domain;
 
-import elevators.domain.dto.ElevatorDto;
-import elevators.domain.exceptions.IncorrectFloorNumberException;
+import com.elevators.domain.dto.ElevatorDto;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
