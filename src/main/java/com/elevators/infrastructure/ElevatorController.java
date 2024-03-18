@@ -3,16 +3,26 @@ package com.elevators.infrastructure;
 import com.elevators.domain.dto.PickupRequestDto;
 import com.elevators.domain.ElevatorSystem;
 import com.elevators.domain.dto.ElevatorDto;
+import com.elevators.domain.dto.PickupResponseDto;
+
+import com.elevators.domain.exceptions.IncorrectFloorNumberException;
+import com.elevators.domain.exceptions.IncorrectPickupRequestFormat;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
+@Log4j2
+@Validated
 public class ElevatorController {
 
     private final ElevatorSystem elevatorSystem;
@@ -28,8 +38,15 @@ public class ElevatorController {
     }
 
     @PostMapping("/elevators/pickup")
-    public ResponseEntity<Integer> pickup(@RequestBody PickupRequestDto pickupRequestDto) {
-        return ResponseEntity.ok(elevatorSystem.pickup(pickupRequestDto.floor()));
+    public ResponseEntity<PickupResponseDto> pickup(@RequestBody @Valid PickupRequestDto pickupRequestDto) {
+        if(pickupRequestDto.floor() == null) {
+            throw new IncorrectPickupRequestFormat();
+        }
+        PickupResponseDto response = PickupResponseDto.builder()
+                .elevatorId(elevatorSystem.pickup(pickupRequestDto.floor()))
+                .build();
+        log.info(response.toString());
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/elevators/step")
