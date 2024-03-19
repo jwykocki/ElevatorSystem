@@ -80,7 +80,7 @@ public class SimpleScanRequestQueue implements FloorRequestQueue {
             if(currentFloor >= destinationFloor){
                 return currentFloor - destinationFloor;
             }else {
-                int last = downQueue.stream().min(Integer::compareTo).orElseThrow();
+                int last = downQueue.stream().min(Integer::compareTo).orElse(0);
                 return currentFloor - last + destinationFloor - last;
             }
         }

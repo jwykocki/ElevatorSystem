@@ -1,0 +1,29 @@
+2024-03-19 12:05:21.544 INFO  Starting ElevatorApplication using Java 17.0.6 with PID 26416 (C:\Users\48606\IdeaProjects\ElevatorSystem\target\classes started by 48606 in C:\Users\48606\IdeaProjects\ElevatorSystem) - com.elevators.ElevatorApplication
+2024-03-19 12:05:21.557 INFO  No active profile set, falling back to 1 default profile: "default" - com.elevators.ElevatorApplication
+2024-03-19 12:05:21.617 INFO  Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable - org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor
+2024-03-19 12:05:21.618 INFO  For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' - org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor
+2024-03-19 12:05:22.800 INFO  Tomcat initialized with port 8080 (http) - org.springframework.boot.web.embedded.tomcat.TomcatWebServer
+2024-03-19 12:05:22.814 INFO  Initializing ProtocolHandler ["http-nio-8080"] - org.apache.coyote.http11.Http11NioProtocol
+2024-03-19 12:05:22.816 INFO  Starting service [Tomcat] - org.apache.catalina.core.StandardService
+2024-03-19 12:05:22.817 INFO  Starting Servlet engine: [Apache Tomcat/10.1.19] - org.apache.catalina.core.StandardEngine
+2024-03-19 12:05:22.873 INFO  Initializing Spring embedded WebApplicationContext - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]
+2024-03-19 12:05:22.875 INFO  Root WebApplicationContext: initialization completed in 1253 ms - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext
+2024-03-19 12:05:22.938 INFO  Created system with 3 elevators - com.elevators.domain.ElevatorSystem
+2024-03-19 12:05:23.491 INFO  LiveReload server is running on port 35729 - org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer
+2024-03-19 12:05:23.507 INFO  Starting ProtocolHandler ["http-nio-8080"] - org.apache.coyote.http11.Http11NioProtocol
+2024-03-19 12:05:23.529 INFO  Tomcat started on port 8080 (http) with context path '' - org.springframework.boot.web.embedded.tomcat.TomcatWebServer
+2024-03-19 12:05:23.540 INFO  Started ElevatorApplication in 2.417 seconds (process running for 3.305) - com.elevators.ElevatorApplication
+2024-03-19 12:05:31.366 INFO  Initializing Spring DispatcherServlet 'dispatcherServlet' - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]
+2024-03-19 12:05:31.366 INFO  Initializing Servlet 'dispatcherServlet' - org.springframework.web.servlet.DispatcherServlet
+2024-03-19 12:05:31.367 INFO  Completed initialization in 1 ms - org.springframework.web.servlet.DispatcherServlet
+2024-03-19 12:05:31.396 INFO  Received request - GET '/elevators/status' - com.elevators.infrastructure.ElevatorController
+2024-03-19 12:05:31.399 INFO  Status: [[0, 0, 0], [1, 0, 0], [2, 0, 0]] - com.elevators.domain.ElevatorSystem
+2024-03-19 12:06:01.575 INFO  Received request - POST '/elevators/pickup' - com.elevators.infrastructure.ElevatorController
+2024-03-19 12:06:01.577 INFO  Pickup request for floor 3 direction 1 assigned to elevator 0 - com.elevators.domain.ElevatorSystem
+2024-03-19 12:06:01.579 INFO  PickupResponseDto[elevatorId=0] - com.elevators.infrastructure.ElevatorController
+2024-03-19 12:06:02.968 INFO  Received request - GET '/elevators/status' - com.elevators.infrastructure.ElevatorController
+2024-03-19 12:06:02.968 INFO  Status: [[0, 0, 0], [1, 0, 0], [2, 0, 0]] - com.elevators.domain.ElevatorSystem
+2024-03-19 12:06:05.177 INFO  Received request - POST '/elevators/step' - com.elevators.infrastructure.ElevatorController
+2024-03-19 12:06:05.177 INFO  Making step... - com.elevators.domain.ElevatorSystem
+2024-03-19 12:06:06.813 INFO  Received request - GET '/elevators/status' - com.elevators.infrastructure.ElevatorController
+2024-03-19 12:06:06.813 INFO  Status: [[0, 0, 1], [1, 0, 0], [2, 0, 0]] - com.elevators.domain.ElevatorSystem
