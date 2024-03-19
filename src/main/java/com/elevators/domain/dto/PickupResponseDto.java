@@ -9,7 +9,4 @@ public record PickupResponseDto(
         int elevatorId
 
 ) implements Serializable{
-//    public PickupResponseDto(int elevatorId) {
-//        this.elevatorId = elevatorId;
-//    }
 }

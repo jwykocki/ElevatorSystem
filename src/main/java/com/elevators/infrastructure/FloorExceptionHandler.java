@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
 @Log4j2
-public class FloorExceptionHandler {
+class FloorExceptionHandler {
 
     @ExceptionHandler(IncorrectFloorNumberException.class)
     @ResponseBody

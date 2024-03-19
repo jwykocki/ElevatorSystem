@@ -1,6 +1,6 @@
 package com.elevators.domain;
 
-public interface FloorRequestQueue {
+interface FloorRequestQueue {
 
     void addRequest(int floor, int direction);
     int getNextFloor(int currentFloor);

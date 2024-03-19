@@ -14,10 +14,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class TypicalScenarioUserSendsRequestsToPickupAndCheckStatusTest extends BaseIntegrationTest {
+class TypicalScenarioTest extends BaseIntegrationTest {
 
     @Test
-    public void user_use_system_with_3_elevators_and_wants_to_pickup_elevators_and_checks_their_statuses() throws Exception {
+    void user_use_system_with_3_elevators_and_wants_to_pickup_elevators_and_checks_their_statuses() throws Exception {
 
         //step 1: user checks that every elevator is on the floor zero
         // given & when
@@ -87,6 +87,7 @@ public class TypicalScenarioUserSendsRequestsToPickupAndCheckStatusTest extends 
         );
         // then
         performSecondStep.andExpect(status().isOk());
+
         // given & when
         ResultActions performThirdStep = mockMvc.perform(post("/elevators/step")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)

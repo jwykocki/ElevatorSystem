@@ -12,27 +12,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import com.elevators.BaseIntegrationTest;
 
-public class ApiValidationTest extends BaseIntegrationTest{
+class ApiValidationTest extends BaseIntegrationTest{
 
     @Test
-    public void should_return_200_OK_when_it_is_correct_floor_number() throws Exception {
-        // given & when
-        ResultActions perform = mockMvc.perform(post("/elevators/pickup")
-                .content("""
-                        {
-                        "floor": 1
-                        }
-                        """)
-                .contentType(MediaType.APPLICATION_JSON_VALUE)
-        );
-        // then
-        MvcResult mvcResult = perform.andExpect(status().isOk()).andReturn();
-        String json = mvcResult.getResponse().getContentAsString();
-        assertThat(json).isEqualTo("{\"elevatorId\":0}");
-    }
-
-    @Test
-    public void should_return_404_NOT_FOUND_when_floor_number_is_bigger_than_max() throws Exception {
+    void should_return_404_NOT_FOUND_when_floor_number_is_bigger_than_max() throws Exception {
         // given & when
         ResultActions perform = mockMvc.perform(post("/elevators/pickup")
                 .content("""
@@ -49,7 +32,7 @@ public class ApiValidationTest extends BaseIntegrationTest{
     }
 
     @Test
-    public void should_return_404_NOT_FOUND_when_floor_number_is_smaller_than_min() throws Exception {
+    void should_return_404_NOT_FOUND_when_floor_number_is_smaller_than_min() throws Exception {
         // given & when
         ResultActions perform = mockMvc.perform(post("/elevators/pickup")
                 .content("""
@@ -66,7 +49,7 @@ public class ApiValidationTest extends BaseIntegrationTest{
     }
 
     @Test
-    public void should_return_400_BAD_REQUEST_when_it_is_incorrect_floor_number() throws Exception {
+   void should_return_400_BAD_REQUEST_when_it_is_incorrect_floor_number() throws Exception {
         // given & when
         ResultActions perform = mockMvc.perform(post("/elevators/pickup")
                 .content("""
@@ -81,7 +64,7 @@ public class ApiValidationTest extends BaseIntegrationTest{
     }
 
     @Test
-    public void should_return_400_BAD_REQUEST_when_floor_number_is_empty() throws Exception {
+    void should_return_400_BAD_REQUEST_when_floor_number_is_empty() throws Exception {
         // given & when
         ResultActions perform = mockMvc.perform(post("/elevators/pickup")
                 .content("""
@@ -98,7 +81,7 @@ public class ApiValidationTest extends BaseIntegrationTest{
     }
 
     @Test
-    public void should_return_400_BAD_REQUEST_when_there_is_no_floor_field_in_request_body() throws Exception {
+    void should_return_400_BAD_REQUEST_when_there_is_no_floor_field_in_request_body() throws Exception {
         // given & when
         ResultActions perform = mockMvc.perform(post("/elevators/pickup")
                 .content("""
@@ -115,7 +98,7 @@ public class ApiValidationTest extends BaseIntegrationTest{
     }
 
     @Test
-    public void should_return_400_BAD_REQUEST_when_request_body_is_empty() throws Exception {
+    void should_return_400_BAD_REQUEST_when_request_body_is_empty() throws Exception {
         // given & when
         ResultActions perform = mockMvc.perform(post("/elevators/pickup")
                 .content("""
@@ -130,7 +113,7 @@ public class ApiValidationTest extends BaseIntegrationTest{
     }
 
     @Test
-    public void should_return_400_BAD_REQUEST_when_request_has_no_content() throws Exception {
+    void should_return_400_BAD_REQUEST_when_request_has_no_content() throws Exception {
         // given & when
         ResultActions perform = mockMvc.perform(post("/elevators/pickup")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)

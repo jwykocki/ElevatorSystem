@@ -12,14 +12,11 @@ class ElevatorSystemTest {
 
 
     private ElevatorSystem elevatorSystem;
-    private ElevatorSystemConfig elevatorSystemConfig;
-
 
 
     @BeforeEach
     public void setUp() {
-        elevatorSystemConfig = new ElevatorSystemConfig(3, 0, 5);
-
+        ElevatorSystemConfig elevatorSystemConfig = new ElevatorSystemConfig(3, 0, 5);
         elevatorSystem = new ElevatorSystem(elevatorSystemConfig);
     }
 

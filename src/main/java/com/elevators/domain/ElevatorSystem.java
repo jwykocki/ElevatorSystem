@@ -13,6 +13,7 @@ public class ElevatorSystem {
 
     private final List<Elevator> elevators;
     private final List<FloorRequestQueue> floorQueues;
+
     public ElevatorSystem(ElevatorSystemConfig config) {
         elevators = new ArrayList<>();
         floorQueues = new ArrayList<>();
@@ -29,11 +30,11 @@ public class ElevatorSystem {
 
     }
 
-    public List<ElevatorDto> status(){
+    public List<ElevatorDto> status() {
 
         List<ElevatorDto> elevatorsStatus = new ArrayList<>();
 
-        for(Elevator elevator : elevators){
+        for (Elevator elevator : elevators) {
             ElevatorDto currentElevatorStatus = ElevatorDto.builder()
                     .id(elevator.getId())
                     .currentFloor(elevator.getCurrentFloor())
@@ -46,26 +47,22 @@ public class ElevatorSystem {
         return elevatorsStatus;
     }
 
-    private void update(int id, int currentFloor, int nextFloor){
+    private void update(int id, int currentFloor, int nextFloor) {
         elevators.get(id).setCurrentFloor(currentFloor);
         elevators.get(id).setNextFloor(nextFloor);
     }
 
-    public void step(){
+    public void step() {
         log.info("Making step...");
-        for(Elevator elevator : elevators){
+        for (Elevator elevator : elevators) {
             int newCurrentFloor = elevator.getNextFloor();
             int newNextFloor = floorQueues.get(elevator.getId()).getNextFloor(newCurrentFloor);
             update(elevator.getId(), newCurrentFloor, newNextFloor);
         }
     }
 
-    private int countDirection(int currentFloor, int destinationFloor){
-        if(currentFloor>destinationFloor){
-            return  -1;
-        }else{
-            return  1;
-        }
+    private int countDirection(int currentFloor, int destinationFloor) {
+        return currentFloor > destinationFloor ? -1 : 1;
     }
 
     private int findNearestElevator(int floor) {
@@ -81,7 +78,7 @@ public class ElevatorSystem {
         return nearestElevator;
     }
 
-    public int pickup(int floor){
+    public int pickup(int floor) {
         int elevatorIndex = findNearestElevator(floor);
         int currentFloor = elevators.get(elevatorIndex).getCurrentFloor();
         int direction = countDirection(currentFloor, floor);

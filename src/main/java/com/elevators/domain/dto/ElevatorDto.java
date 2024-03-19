@@ -10,9 +10,9 @@ import java.io.Serializable;
 @Builder
 @Getter
 public class ElevatorDto implements Serializable{
-    private int id;
-    private int currentFloor;
-    private int nextFloor;
+    private final int id;
+    private final int currentFloor;
+    private final int nextFloor;
 
     @Override
     public String toString() {
