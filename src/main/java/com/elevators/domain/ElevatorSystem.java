@@ -42,7 +42,7 @@ public class ElevatorSystem {
 
             elevatorsStatus.add(currentElevatorStatus);
         }
-
+        log.info("Status: " + elevatorsStatus);
         return elevatorsStatus;
     }
 
@@ -52,7 +52,7 @@ public class ElevatorSystem {
     }
 
     public void step(){
-        log.info("- Step -");
+        log.info("Making step...");
         for(Elevator elevator : elevators){
             int newCurrentFloor = elevator.getNextFloor();
             int newNextFloor = floorQueues.get(elevator.getId()).getNextFloor(newCurrentFloor);
@@ -71,18 +71,13 @@ public class ElevatorSystem {
     private int findNearestElevator(int floor) {
         int nearestElevator = 0;
         int minDistance = Math.abs(floorQueues.get(0).getDistance(elevators.get(0).getCurrentFloor(), floor));
-        log.info("Find nearest elevator: " + minDistance + "(" + nearestElevator + ")");
         for (int i = 1; i < elevators.size(); i++) {
             int distance = Math.abs(floorQueues.get(i).getDistance(elevators.get(i).getCurrentFloor(), floor));
-            log.info("Find nearest elevator: " + distance+ "(" + elevators.get(i).getId() + ")");
             if (distance < minDistance) {
-
                 minDistance = distance;
-                log.info("new min = " + minDistance);
                 nearestElevator = i;
             }
         }
-        log.info("return " + nearestElevator);
         return nearestElevator;
     }
 
@@ -90,7 +85,7 @@ public class ElevatorSystem {
         int elevatorIndex = findNearestElevator(floor);
         int currentFloor = elevators.get(elevatorIndex).getCurrentFloor();
         int direction = countDirection(currentFloor, floor);
-        log.info("Pickup: " + floor + " " + direction + "(" + elevatorIndex + ")");
+        log.info("Pickup request for floor " + floor + " direction " + direction + " assigned to elevator " + elevatorIndex);
         floorQueues.get(elevatorIndex).addRequest(floor, direction);
         return elevatorIndex;
     }

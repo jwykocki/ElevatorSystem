@@ -34,11 +34,13 @@ public class ElevatorController {
 
     @GetMapping("/elevators/status")
     public ResponseEntity<List<ElevatorDto>> getElevators() {
+        log.info("Received request - GET '/elevators/status'");
         return ResponseEntity.ok(elevatorSystem.status());
     }
 
     @PostMapping("/elevators/pickup")
     public ResponseEntity<PickupResponseDto> pickup(@RequestBody @Valid PickupRequestDto pickupRequestDto) {
+        log.info("Received request - POST '/elevators/pickup'");
         if(pickupRequestDto.floor() == null) {
             throw new IncorrectPickupRequestFormat();
         }
@@ -51,6 +53,7 @@ public class ElevatorController {
 
     @PostMapping("/elevators/step")
     public void makeStep() {
+        log.info("Received request - POST '/elevators/step'");
         elevatorSystem.step();
     }
 
