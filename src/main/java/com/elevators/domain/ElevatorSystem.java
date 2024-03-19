@@ -70,14 +70,19 @@ public class ElevatorSystem {
 
     private int findNearestElevator(int floor) {
         int nearestElevator = 0;
-        int minDistance = floorQueues.get(0).getDistance(elevators.get(0).getCurrentFloor(), floor);
+        int minDistance = Math.abs(floorQueues.get(0).getDistance(elevators.get(0).getCurrentFloor(), floor));
+        log.info("Find nearest elevator: " + minDistance + "(" + nearestElevator + ")");
         for (int i = 1; i < elevators.size(); i++) {
-            int distance = floorQueues.get(0).getDistance(elevators.get(i).getCurrentFloor(), floor);
+            int distance = Math.abs(floorQueues.get(i).getDistance(elevators.get(i).getCurrentFloor(), floor));
+            log.info("Find nearest elevator: " + distance+ "(" + elevators.get(i).getId() + ")");
             if (distance < minDistance) {
+
                 minDistance = distance;
+                log.info("new min = " + minDistance);
                 nearestElevator = i;
             }
         }
+        log.info("return " + nearestElevator);
         return nearestElevator;
     }
 
