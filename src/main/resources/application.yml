@@ -3,3 +3,7 @@ elevator:
     numberOfElevators: 3
     minimumFloor: 0
     maximumFloor: 5
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
