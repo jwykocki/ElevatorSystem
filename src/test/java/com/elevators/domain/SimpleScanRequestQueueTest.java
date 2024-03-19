@@ -22,9 +22,6 @@ class SimpleScanRequestQueueTest {
         requestQueue = new SimpleScanRequestQueue(MIN_FLOOR, MAX_FLOOR);
     }
 
-
-
-
     @Test
     void should_next_floor_be_3_when_first_request_was_3() throws Exception {
         //given && when

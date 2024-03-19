@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 public class ElevatorSystemConfig {
-    private int numberOfElevators;
-    private int minimumFloor;
-    private int maximumFloor;
+    private final int numberOfElevators;
+    private final int minimumFloor;
+    private final int maximumFloor;
 
     public ElevatorSystemConfig(int numberOfElevators, int minimumFloor, int maximumFloor) {
         this.numberOfElevators = numberOfElevators;

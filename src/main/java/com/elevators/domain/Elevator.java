@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @Builder
-public class Elevator{
+class Elevator{
     private int id;
     private int currentFloor;
     private int nextFloor;

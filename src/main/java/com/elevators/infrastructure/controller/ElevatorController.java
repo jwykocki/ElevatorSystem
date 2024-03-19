@@ -1,28 +1,23 @@
-package com.elevators.infrastructure;
+package com.elevators.infrastructure.controller;
 
 import com.elevators.domain.dto.PickupRequestDto;
 import com.elevators.domain.ElevatorSystem;
 import com.elevators.domain.dto.ElevatorDto;
 import com.elevators.domain.dto.PickupResponseDto;
-
-import com.elevators.domain.exceptions.IncorrectFloorNumberException;
 import com.elevators.domain.exceptions.IncorrectPickupRequestFormat;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
 @Log4j2
 @Validated
+@RequestMapping("/elevators")
 public class ElevatorController {
 
     private final ElevatorSystem elevatorSystem;
@@ -32,13 +27,13 @@ public class ElevatorController {
         this.elevatorSystem = elevatorSystem;
     }
 
-    @GetMapping("/elevators/status")
+    @GetMapping("/status")
     public ResponseEntity<List<ElevatorDto>> getElevators() {
         log.info("Received request - GET '/elevators/status'");
         return ResponseEntity.ok(elevatorSystem.status());
     }
 
-    @PostMapping("/elevators/pickup")
+    @PostMapping("/pickup")
     public ResponseEntity<PickupResponseDto> pickup(@RequestBody @Valid PickupRequestDto pickupRequestDto) {
         log.info("Received request - POST '/elevators/pickup'");
         if(pickupRequestDto.floor() == null) {
@@ -51,7 +46,7 @@ public class ElevatorController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/elevators/step")
+    @PostMapping("/step")
     public void makeStep() {
         log.info("Received request - POST '/elevators/step'");
         elevatorSystem.step();
