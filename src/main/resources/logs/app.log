@@ -1,21 +1,20 @@
-2024-03-20 13:13:36.451 INFO  Starting ElevatorApplication using Java 17.0.6 with PID 29572 (C:\Users\48606\IdeaProjects\ElevatorSystem\target\classes started by 48606 in C:\Users\48606\IdeaProjects\ElevatorSystem) - com.elevators.ElevatorApplication
-2024-03-20 13:13:36.462 INFO  No active profile set, falling back to 1 default profile: "default" - com.elevators.ElevatorApplication
-2024-03-20 13:13:36.517 INFO  Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable - org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor
-2024-03-20 13:13:36.517 INFO  For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' - org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor
-2024-03-20 13:13:37.844 INFO  Tomcat initialized with port 8080 (http) - org.springframework.boot.web.embedded.tomcat.TomcatWebServer
-2024-03-20 13:13:37.860 INFO  Initializing ProtocolHandler ["http-nio-8080"] - org.apache.coyote.http11.Http11NioProtocol
-2024-03-20 13:13:37.863 INFO  Starting service [Tomcat] - org.apache.catalina.core.StandardService
-2024-03-20 13:13:37.864 INFO  Starting Servlet engine: [Apache Tomcat/10.1.19] - org.apache.catalina.core.StandardEngine
-2024-03-20 13:13:37.929 INFO  Initializing Spring embedded WebApplicationContext - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]
-2024-03-20 13:13:37.931 INFO  Root WebApplicationContext: initialization completed in 1412 ms - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext
-2024-03-20 13:13:38.005 INFO  Created system with 3 elevators - com.elevators.domain.ElevatorSystem
-2024-03-20 13:13:38.638 INFO  LiveReload server is running on port 35729 - org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer
-2024-03-20 13:13:38.658 INFO  Starting ProtocolHandler ["http-nio-8080"] - org.apache.coyote.http11.Http11NioProtocol
-2024-03-20 13:13:38.681 INFO  Tomcat started on port 8080 (http) with context path '' - org.springframework.boot.web.embedded.tomcat.TomcatWebServer
-2024-03-20 13:13:38.693 INFO  Started ElevatorApplication in 2.74 seconds (process running for 3.717) - com.elevators.ElevatorApplication
-2024-03-20 13:13:54.536 INFO  Initializing Spring DispatcherServlet 'dispatcherServlet' - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]
-2024-03-20 13:13:54.537 INFO  Initializing Servlet 'dispatcherServlet' - org.springframework.web.servlet.DispatcherServlet
-2024-03-20 13:13:54.538 INFO  Completed initialization in 1 ms - org.springframework.web.servlet.DispatcherServlet
-2024-03-20 13:13:55.352 INFO  Init duration for springdoc-openapi is: 376 ms - org.springdoc.api.AbstractOpenApiResource
-2024-03-20 13:14:02.385 INFO  Received request - GET '/elevators/status' - com.elevators.infrastructure.controller.ElevatorController
-2024-03-20 13:14:02.388 INFO  Status: [[0, 0, 0], [1, 0, 0], [2, 0, 0]] - com.elevators.domain.ElevatorSystem
+2024-03-20 14:19:33.475 INFO  Starting ElevatorApplication using Java 17.0.6 with PID 27740 (C:\Users\48606\IdeaProjects\ElevatorSystem\target\classes started by 48606 in C:\Users\48606\IdeaProjects\ElevatorSystem) - com.elevators.ElevatorApplication
+2024-03-20 14:19:33.484 INFO  No active profile set, falling back to 1 default profile: "default" - com.elevators.ElevatorApplication
+2024-03-20 14:19:33.524 INFO  Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable - org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor
+2024-03-20 14:19:33.525 INFO  For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' - org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor
+2024-03-20 14:19:34.295 INFO  Tomcat initialized with port 8080 (http) - org.springframework.boot.web.embedded.tomcat.TomcatWebServer
+2024-03-20 14:19:34.305 INFO  Initializing ProtocolHandler ["http-nio-8080"] - org.apache.coyote.http11.Http11NioProtocol
+2024-03-20 14:19:34.307 INFO  Starting service [Tomcat] - org.apache.catalina.core.StandardService
+2024-03-20 14:19:34.308 INFO  Starting Servlet engine: [Apache Tomcat/10.1.19] - org.apache.catalina.core.StandardEngine
+2024-03-20 14:19:34.348 INFO  Initializing Spring embedded WebApplicationContext - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]
+2024-03-20 14:19:34.348 INFO  Root WebApplicationContext: initialization completed in 821 ms - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext
+2024-03-20 14:19:34.401 INFO  Created system with 3 elevators - com.elevators.domain.ElevatorSystem
+2024-03-20 14:19:34.778 INFO  LiveReload server is running on port 35729 - org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer
+2024-03-20 14:19:34.792 INFO  Starting ProtocolHandler ["http-nio-8080"] - org.apache.coyote.http11.Http11NioProtocol
+2024-03-20 14:19:34.808 INFO  Tomcat started on port 8080 (http) with context path '' - org.springframework.boot.web.embedded.tomcat.TomcatWebServer
+2024-03-20 14:19:34.817 INFO  Started ElevatorApplication in 1.712 seconds (process running for 2.601) - com.elevators.ElevatorApplication
+2024-03-20 14:19:37.798 INFO  Initializing Spring DispatcherServlet 'dispatcherServlet' - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]
+2024-03-20 14:19:37.799 INFO  Initializing Servlet 'dispatcherServlet' - org.springframework.web.servlet.DispatcherServlet
+2024-03-20 14:19:37.799 INFO  Completed initialization in 0 ms - org.springframework.web.servlet.DispatcherServlet
+2024-03-20 14:19:37.821 INFO  Received request - GET '/elevators/status' - com.elevators.infrastructure.controller.ElevatorController
+2024-03-20 14:19:37.823 INFO  Status: [[0, 0, 0], [1, 0, 0], [2, 0, 0]] - com.elevators.domain.ElevatorSystem
