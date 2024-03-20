@@ -7,12 +7,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 @ActiveProfiles("integration")
 @SpringBootTest(classes = ElevatorApplication.class)
 @AutoConfigureMockMvc
-@Testcontainers
 public class BaseIntegrationTest {
 
     @Autowired
