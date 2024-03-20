@@ -5,7 +5,7 @@ import com.elevators.domain.ElevatorSystem;
 import com.elevators.domain.dto.ElevatorDto;
 import com.elevators.domain.dto.PickupResponseDto;
 import com.elevators.domain.exceptions.IncorrectPickupRequestFormat;
-import lombok.AllArgsConstructor;
+
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
